@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
 
 
   # Create a forwarded port mapping.
-  # Forward MongoDB
+  # Forward MongoDB database and HTTP interface
   config.vm.network "forwarded_port", guest: 27017, host: 27017
   config.vm.network "forwarded_port", guest: 28017, host: 28017
 
