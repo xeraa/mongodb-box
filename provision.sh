@@ -3,6 +3,9 @@
 echo "Update all existing packages"
 sudo yum update -y
 
+echo "Install dependencies"
+sudo yum install git -y
+
 if [ ! -f /etc/yum.repos.d/mongodb.repo ]
 then
   echo "Installing MongoDB"
