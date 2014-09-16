@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+Vagrant.configure(2) do |config|
+
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  # https://vagrantcloud.com/jayunit100/centos7
+  config.vm.box = "jayunit100/centos7"
+
+
+  # Create a forwarded port mapping.
+  # Forward MongoDB database and HTTP interface
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
+  config.vm.network "forwarded_port", guest: 28017, host: 28017
+
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--name", "mongodb"]
+  end
+
+
+  # Fix https://github.com/mitchellh/vagrant/issues/1673
+  config.ssh.pty = true
+
+
+  # Install our dependencies
+  config.vm.provision "shell", :path => "provision.sh"
+
+
+end
