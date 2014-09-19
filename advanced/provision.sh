@@ -6,7 +6,7 @@ sudo yum update -y
 echo "Install dependencies"
 sudo yum install git -y
 
-if [ ! -f /etc/yum.repos.d/mongodb.repo ]
+if yum list installed "mongodb-org" >/dev/null 2>&1
 then
   echo "Installing MongoDB"
   sudo cp /vagrant/configs/mongodb.repo /etc/yum.repos.d/mongodb.repo
