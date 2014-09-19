@@ -17,7 +17,4 @@ else
   echo "MongoDB has already been added"
 fi
 
-echo "Checking the status of MongoDB"
-sudo service mongod status
-
 echo "All done..."
