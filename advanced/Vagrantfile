@@ -24,6 +24,15 @@ Vagrant.configure(2) do |config|
   end
 
 
+  # Try to cache (yum) dependencies
+  if Vagrant.has_plugin?("vagrant-cachier")
+
+    # Configure cached packages to be shared between instances of the same base box.
+    config.cache.scope = :box
+
+  end
+
+
   # Fix https://github.com/mitchellh/vagrant/issues/1673
   config.ssh.pty = true
 
